@@ -50,10 +50,8 @@ window.addEventListener('DOMContentLoaded', async function(event) {
     let movieID = movies[i].id
     let poster = movies[i].poster_path
 
-    let alreadyWatched = await db.collection('watched_movies').doc(`${movieID}`).get()
-    if (!alreadyWatched.exists) {
-        //console.log(`${moviesList[i].original_title} has not been watched.`)
-        opacity = ''
+    let Watched = await db.collection('watched_movies').doc(`${movieID}`).get()
+    if (!Watched.exists) {opacity = ''
     } else {
         console.log(`${movies[i].original_title} has been watched.`)
         opacity = 'opacity-20'
